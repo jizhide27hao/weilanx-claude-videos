@@ -51,6 +51,46 @@ import {Ep21CoverTall} from './episodes/ep21-nobel-physics/Cover';
 import {Ep22CoverTall} from './episodes/ep22-nobel-chemistry/Cover';
 import {EP22_H, EP22_W, Ep22NobelChemistry} from './episodes/ep22-nobel-chemistry/Ep22NobelChemistry';
 import {DURATION as EP22_DURATION} from './episodes/ep22-nobel-chemistry/cues';
+import {EP52_H, EP52_W, Ep52XiaomiHistory} from './episodes/ep52-xiaomi-history/Ep52XiaomiHistory';
+import {DURATION as EP52_DURATION} from './episodes/ep52-xiaomi-history/cues';
+import {Ep52CoverTall} from './episodes/ep52-xiaomi-history/CoverTall';
+import {Ep52Cover} from './episodes/ep52-xiaomi-history/Cover';
+import {EP53_H, EP53_W, Ep53HuaweiHistory} from './episodes/ep53-huawei-history/Ep53HuaweiHistory';
+import {EP54_DURATION, EP54_H, EP54_W, Ep54AppleHistory} from './episodes/ep54-apple-history/Ep54AppleHistory';
+import {Ep54Cover} from './episodes/ep54-apple-history/Cover';
+import {Ep54CoverTall} from './episodes/ep54-apple-history/CoverTall';
+import {DURATION as EP53_DURATION} from './episodes/ep53-huawei-history/cues';
+import {Ep53CoverTall} from './episodes/ep53-huawei-history/CoverTall';
+import {Ep53Cover} from './episodes/ep53-huawei-history/Cover';
+import {Ep53CoverTallGilded} from './episodes/ep53-huawei-history/CoverTallGilded';
+import {Ep53CoverWideGilded} from './episodes/ep53-huawei-history/CoverWideGilded';
+// ep53 暗金文献版（A 路线）：36 页整片，不硬切、全柔入、同屏并置
+import {FilmA, FILM_A_FRAMES} from './episodes/ep53-huawei-history/film-a';
+import {FilmA as FilmA55, FILM_A_FRAMES as FILM_A55_FRAMES} from './episodes/ep55-apple-history/film-a';
+import {EP56_DURATION, EP56_H, EP56_W, Ep56TencentHistory} from './episodes/ep56-tencent-history/Ep56TencentHistory';
+import {Ep56Cover} from './episodes/ep56-tencent-history/Cover';
+import {Ep56Cover43} from './episodes/ep56-tencent-history/Cover43';
+import {Ep56CoverTall} from './episodes/ep56-tencent-history/CoverTall';
+import {FilmA as FilmA57, FILM_A_FRAMES as FILM_A57_FRAMES} from './episodes/ep57-tencent-history/film-a';
+import {Ep57CoverTallGilded} from './episodes/ep57-tencent-history/CoverTallGilded';
+import {Ep57CoverWideGilded} from './episodes/ep57-tencent-history/CoverWideGilded';
+import {EP58_DURATION, EP58_H, EP58_W, Ep58AlibabaHistory} from './episodes/ep58-alibaba-history/Ep58AlibabaHistory';
+import {Ep58Cover} from './episodes/ep58-alibaba-history/Cover';
+import {Ep58CoverTall} from './episodes/ep58-alibaba-history/CoverTall';
+import {FilmA as FilmA59, FILM_A_FRAMES as FILM_A59_FRAMES} from './episodes/ep59-alibaba-history/film-a';
+import {CompanyCollectionCover} from './episodes/collection-company-history/Cover11';
+import {Ep59CoverTallGilded} from './episodes/ep59-alibaba-history/CoverTallGilded';
+import {Ep59CoverWideGilded} from './episodes/ep59-alibaba-history/CoverWideGilded';
+import {Ep55CoverTallGilded} from './episodes/ep55-apple-history/CoverTallGilded';
+import {Ep55CoverWideGilded} from './episodes/ep55-apple-history/CoverWideGilded';
+// ep53 风格样片：同一段内容（2019 · 8,588 亿 · 实体清单）在五种风格下的样子，只用来挑风格
+import {GildedSample} from './episodes/ep53-style-samples/A-Gilded';
+import {GILDED_MOTION_FRAMES, GildedMotion} from './episodes/ep53-style-samples/A-Motion';
+import {HalftoneSample} from './episodes/ep53-style-samples/B-Halftone';
+import {HALFTONE_MOTION_FRAMES, HalftoneMotion} from './episodes/ep53-style-samples/B-Motion';
+import {LamplightSample} from './episodes/ep53-style-samples/C-Lamplight';
+import {BlackGoldSample} from './episodes/ep53-style-samples/D-BlackGold';
+import {TacticalSample} from './episodes/ep53-style-samples/E-Tactical';
 import {Ep18CoverTall} from './episodes/ep18-ai-history/CoverTall';
 import {Ep19CoverTall} from './episodes/ep19-apple-history/CoverTall';
 import {Ep20CoverTall} from './episodes/ep20-nvidia-history/CoverTall';
@@ -130,6 +170,15 @@ import {EDITOR_ROOM_DEMO_FRAMES, EditorRoomDemo} from './library/previews/Editor
 import {WARM_DESK_SHOW_FRAMES, WarmDeskCoverDemo, WarmDeskShowDemo} from './library/previews/WarmDeskShowDemo';
 import {PixelWardrobe} from './library/previews/PixelWardrobe';
 import {Wardrobe} from './library/previews/Wardrobe';
+import {EP60_DURATION, EP60_H, EP60_W, Ep60Receipt} from './episodes/ep60-child-cost/Ep60Receipt';
+import {EP60_FILM_FRAMES, EP60_FILM_H, EP60_FILM_W, Ep60Film} from './episodes/ep60-child-cost/Ep60Film';
+import {EP60V2_FRAMES, EP60V2_H, EP60V2_W, Ep60FilmV2} from './episodes/ep60-child-cost/Ep60FilmV2';
+import {COVER_TALL_H, COVER_TALL_W, Ep60CoverTall} from './episodes/ep60-child-cost/CoverTall';
+import {AudioTest} from './episodes/ep60-child-cost/AudioTest';
+import {EP61_DURATION, EP61_H, EP61_W, Ep61BaiduHistory} from './episodes/ep61-baidu-history/Ep61BaiduHistory';
+import {Ep61Cover} from './episodes/ep61-baidu-history/Cover';
+import {Ep61Cover43} from './episodes/ep61-baidu-history/Cover43';
+import {Ep61CoverTall} from './episodes/ep61-baidu-history/CoverTall';
 
 const mix = {mix: 'all' as const};
 
@@ -178,12 +227,60 @@ export const Root: React.FC = () => (
       <Still id="ep21-nobel-physics-cover-tall" component={Ep21CoverTall} width={1080} height={1440} />
       <Composition id="ep22-nobel-chemistry" component={Ep22NobelChemistry} durationInFrames={EP22_DURATION} fps={FPS} width={EP22_W} height={EP22_H} defaultProps={mix} />
       <Still id="ep22-nobel-chemistry-cover-tall" component={Ep22CoverTall} width={1080} height={1440} />
+      <Composition id="ep52-xiaomi-history" component={Ep52XiaomiHistory} durationInFrames={EP52_DURATION} fps={FPS} width={EP52_W} height={EP52_H} defaultProps={mix} />
+      <Still id="ep52-xiaomi-history-cover-tall" component={Ep52CoverTall} width={1080} height={1440} />
+      <Still id="ep52-xiaomi-history-cover-wide" component={Ep52Cover} width={1920} height={1080} />
+      <Composition id="ep53-huawei-history" component={Ep53HuaweiHistory} durationInFrames={EP53_DURATION} fps={FPS} width={EP53_W} height={EP53_H} defaultProps={mix} />
+      <Still id="ep53-huawei-history-cover-tall" component={Ep53CoverTall} width={1080} height={1440} />
+      <Still id="ep53-huawei-history-cover-wide" component={Ep53Cover} width={1920} height={1080} />
+      <Composition id="ep54-apple-history" component={Ep54AppleHistory} durationInFrames={EP54_DURATION} fps={FPS} width={EP54_W} height={EP54_H} defaultProps={mix} />
+      <Still id="ep54-apple-history-cover-tall" component={Ep54CoverTall} width={1080} height={1440} />
+      <Still id="ep54-apple-history-cover-wide" component={Ep54Cover} width={1920} height={1080} />
     </Folder>
     <Folder name="05-暗金文献风">
       <Composition id="ep23-wheat-chessboard" component={Ep23Wheat} durationInFrames={EP23_DURATION} fps={EP23_FPS} width={EP23_W} height={EP23_H} />
       <Composition id="ep24-birthday-paradox" component={Ep24Birthday} durationInFrames={EP24_DURATION} fps={EP24_FPS} width={EP24_W} height={EP24_H} />
       <Still id="ep24-birthday-paradox-cover-tall" component={Ep24CoverTall} width={1080} height={1440} />
       <Composition id="ep32-love-lasts" component={Ep32Love} durationInFrames={EP32_DURATION} fps={EP32_FPS} width={EP32_W} height={EP32_H} />
+      <Composition id="ep53-huawei-history-gilded" component={FilmA} durationInFrames={FILM_A_FRAMES} fps={FPS} width={1920} height={1080} defaultProps={mix} />
+      <Still id="ep53-huawei-history-cover-tall-gilded" component={Ep53CoverTallGilded} width={1080} height={1440} />
+      <Still id="ep53-huawei-history-cover-wide-gilded" component={Ep53CoverWideGilded} width={1920} height={1080} />
+      <Composition id="ep55-apple-history-gilded" component={FilmA55} durationInFrames={FILM_A55_FRAMES} fps={FPS} width={1920} height={1080} defaultProps={mix} />
+      <Still id="ep55-apple-history-cover-tall-gilded" component={Ep55CoverTallGilded} width={1080} height={1440} />
+      <Still id="ep55-apple-history-cover-wide-gilded" component={Ep55CoverWideGilded} width={1920} height={1080} />
+    </Folder>
+    <Folder name="07-腾讯史">
+      <Composition id="ep56-tencent-history" component={Ep56TencentHistory} durationInFrames={EP56_DURATION} fps={FPS} width={EP56_W} height={EP56_H} defaultProps={mix} />
+      <Still id="ep56-tencent-history-cover-tall" component={Ep56CoverTall} width={1080} height={1440} />
+      <Still id="ep56-tencent-history-cover-wide" component={Ep56Cover} width={1920} height={1080} />
+      <Still id="ep56-tencent-history-cover-43" component={Ep56Cover43} width={1440} height={1080} />
+      <Composition id="ep57-tencent-history-gilded" component={FilmA57} durationInFrames={FILM_A57_FRAMES} fps={FPS} width={1920} height={1080} defaultProps={mix} />
+      <Still id="ep57-tencent-history-cover-tall-gilded" component={Ep57CoverTallGilded} width={1080} height={1440} />
+      <Still id="ep57-tencent-history-cover-wide-gilded" component={Ep57CoverWideGilded} width={1920} height={1080} />
+    </Folder>
+    <Folder name="08-阿里史">
+      <Composition id="ep58-alibaba-history" component={Ep58AlibabaHistory} durationInFrames={EP58_DURATION} fps={FPS} width={EP58_W} height={EP58_H} defaultProps={mix} />
+      <Still id="ep58-alibaba-history-cover-tall" component={Ep58CoverTall} width={1080} height={1440} />
+      <Still id="ep58-alibaba-history-cover-wide" component={Ep58Cover} width={1920} height={1080} />
+      <Composition id="ep59-alibaba-history-gilded" component={FilmA59} durationInFrames={FILM_A59_FRAMES} fps={FPS} width={1920} height={1080} defaultProps={mix} />
+      <Still id="ep59-alibaba-history-cover-tall-gilded" component={Ep59CoverTallGilded} width={1080} height={1440} />
+      <Still id="ep59-alibaba-history-cover-wide-gilded" component={Ep59CoverWideGilded} width={1920} height={1080} />
+    </Folder>
+    <Folder name="09-生育成本">
+      <Composition id="ep60-child-cost" component={Ep60Receipt} durationInFrames={EP60_DURATION} fps={FPS} width={EP60_W} height={EP60_H} />
+      <Composition id="ep60-child-cost-film" component={Ep60Film} durationInFrames={EP60_FILM_FRAMES} fps={FPS} width={EP60_FILM_W} height={EP60_FILM_H} />
+      <Composition id="ep60-child-cost-v2" component={Ep60FilmV2} durationInFrames={EP60V2_FRAMES} fps={FPS} width={EP60V2_W} height={EP60V2_H} />
+      <Composition id="ep60-cover-tall" component={Ep60CoverTall} durationInFrames={1} fps={FPS} width={COVER_TALL_W} height={COVER_TALL_H} />
+      <Composition id="ep60-audio-test" component={AudioTest} durationInFrames={180} fps={FPS} width={EP60V2_W} height={EP60V2_H} />
+    </Folder>
+    <Folder name="10-合集封面">
+      <Still id="collection-company-history-cover-11" component={CompanyCollectionCover} width={1080} height={1080} />
+    </Folder>
+    <Folder name="11-百度史">
+      <Composition id="ep61-baidu-history" component={Ep61BaiduHistory} durationInFrames={EP61_DURATION} fps={FPS} width={EP61_W} height={EP61_H} defaultProps={mix} />
+      <Still id="ep61-baidu-history-cover-wide" component={Ep61Cover} width={1920} height={1080} />
+      <Still id="ep61-baidu-history-cover-43" component={Ep61Cover43} width={1440} height={1080} />
+      <Still id="ep61-baidu-history-cover-tall" component={Ep61CoverTall} width={1080} height={1440} />
     </Folder>
     <Folder name="06-战术屏科普风">
       <Composition id="ep25-behind-cover" component={Ep25Cover} durationInFrames={EP25_DURATION} fps={EP25_FPS} width={EP25_W} height={EP25_H} />
@@ -228,6 +325,13 @@ export const Root: React.FC = () => (
       <Still id="ep38-butterfly-cover-tall" component={Ep38CoverTall} width={1080} height={1440} />
     </Folder>
     <Folder name="99-素材预览">
+      <Still id="style-sample-a-gilded" component={GildedSample} width={1920} height={1080} />
+      <Still id="style-sample-b-halftone" component={HalftoneSample} width={1920} height={1080} />
+      <Composition id="style-sample-a-motion" component={GildedMotion} durationInFrames={GILDED_MOTION_FRAMES} fps={FPS} width={1920} height={1080} />
+      <Composition id="style-sample-b-motion" component={HalftoneMotion} durationInFrames={HALFTONE_MOTION_FRAMES} fps={FPS} width={1920} height={1080} />
+      <Still id="style-sample-c-lamplight" component={LamplightSample} width={1920} height={1080} />
+      <Still id="style-sample-d-blackgold" component={BlackGoldSample} width={1920} height={1080} />
+      <Still id="style-sample-e-tactical" component={TacticalSample} width={1920} height={1080} />
       <Composition id="library-wardrobe" component={Wardrobe} durationInFrames={150} fps={FPS} width={1080} height={1920} />
       <Composition id="library-gilded" component={GildedDemo} durationInFrames={GILDED_DEMO_FRAMES} fps={FPS} width={1920} height={1080} />
       <Composition id="library-halftone" component={HalftoneDemo} durationInFrames={HALFTONE_DEMO_FRAMES} fps={FPS} width={1920} height={1080} />

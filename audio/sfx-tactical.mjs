@@ -1,5 +1,5 @@
 // 战术屏科普风（FPS 科普）的合成音效：每期调用一次 makeTacticalSfx(ep)，写进 public/audio/<ep>/。
-// 峰值都压到约 −6 dBFS，叠在 −16 LUFS 的配乐上不爆。用法见 .claude/skills/weilanx-creator-fps-video/references/卡点与音效.md
+// 峰值都压到约 −6 dBFS，叠在 −16 LUFS 的配乐上不爆。用法见 .workbuddy/skills/weilanx-creator-fps-video/references/卡点与音效.md
 //   gunshot 枪声、crack 玻璃裂纹（死亡红屏）、rewind 倒带、riser 爆点前 2 秒的上升、impact 低沉冲击、chapter 章节卡「咚」、tick UI 嘀
 import {execFileSync} from 'node:child_process';
 import {mkdirSync} from 'node:fs';

@@ -40,7 +40,7 @@
 
 weilanx-claude-videos 是一个 Remotion 工程，用来做讲 AI、科技史、科学、博弈论、FPS 游戏和中国古代知识的短视频（以中文为主）。画面不是在编辑器里画的：角色、道具、背景、图表、字幕和音效都由代码生成。口播期数需要一段录音和它的字幕，无口播期数只需要一首配乐。
 
-仓库包含可复用的组件库（8 套风格素材包）、风格库、音频合成流水线、八个 Claude Code 工作流 Skill，以及 50 多期视频的完整源码，可以直接当示例看。
+仓库包含可复用的组件库（8 套风格素材包）、风格库、音频合成流水线、十一个工作流 Skill，以及 50 多期视频的完整源码，可以直接当示例看。
 
 ## 风格一览
 
@@ -131,7 +131,9 @@ npm run export -- ep00-demo    # 导出到 bash scripts/ep-dir.sh ep00-demo out 
 
 ## 工作流 Skill
 
-`.claude/skills/` 里有八个 Claude Code Skill。用 Claude Code 打开工程，直接说你想做什么，对应的 Skill 会自动被调用。
+`.workbuddy/skills/` 里有十一个工作流 Skill。WorkBuddy 会扫描这个目录，打开工程直接说你想做什么，对应的 Skill 会自动被调用。
+
+> **目录位置改过一次（2026-10-26）**：原先在 `.claude/skills/`，为了让 WorkBuddy 能自动发现而移到 `.workbuddy/skills/`，原目录已删除、不留兼容软链。Claude Code 只扫 `.claude/skills/`，要用它得自己把路径指过来。
 
 | Skill | 作用 | 交付方式 | 样片 |
 |---|---|---|---|
@@ -155,7 +157,7 @@ Skill 自带的脚本：`analyze.py`、`strip.py`（视频拆解）、`beats.py`
 - Node.js（开发时用 v24），已经 `npm install`
 - `ffmpeg`：导出和测响度
 - [`uv`](https://docs.astral.sh/uv/)：跑 Python 辅助脚本（用法是 `uv run --with numpy --with pillow python …`）
-- 在仓库根目录打开 [Claude Code](https://claude.com/claude-code)，它会读 `CLAUDE.md` → `AGENTS.md` 和 `.claude/skills/` 里的 Skill
+- 在仓库根目录打开 WorkBuddy（或把 Claude Code 的 skill 路径指向 `.workbuddy/skills/`），它会读 `CLAUDE.md` → `AGENTS.md` 和里面的工作流 Skill
 - 字体：新风格用的是系统中文字体（macOS 的 `Songti SC`、`PingFang SC`，回落到 `Noto Serif SC` / `Noto Sans SC`），在 macOS 上效果最好
 
 ### 从参考视频蒸馏一套风格
@@ -171,7 +173,7 @@ Skill 自带的脚本：`analyze.py`、`strip.py`（视频拆解）、`beats.py`
 拆解也可以手动跑：
 
 ```sh
-uv run --with numpy --with pillow python .claude/skills/weilanx-creator-distill-video/scripts/analyze.py \
+uv run --with numpy --with pillow python .workbuddy/skills/weilanx-creator-distill-video/scripts/analyze.py \
   template/参考.mp4 --out materials/00-公共/风格蒸馏/<风格ID>/<视频名>
 ```
 
@@ -182,7 +184,7 @@ uv run --with numpy --with pillow python .claude/skills/weilanx-creator-distill-
 1. **准备配乐。** 样片都卡在 `we-never` 上，这是作者已获授权的自用曲目，mp3 不随仓库分发。把你自己有授权的曲子放进 `public/music/`，在 `audio/music.mjs` 的 `TRACKS` 登记，然后测拍子：
 
    ```sh
-   uv run --with numpy python .claude/skills/weilanx-creator-gilded-video/scripts/beats.py public/music/<曲子>.mp3 --to 40
+   uv run --with numpy python .workbuddy/skills/weilanx-creator-gilded-video/scripts/beats.py public/music/<曲子>.mp3 --to 40
    ```
 
    再把这一期 `timeline.ts` 的网格和重拍帧对到实测结果上（告诉 Skill 用哪首曲子，它会自己改）。
@@ -230,7 +232,7 @@ uv run --with numpy --with pillow python .claude/skills/weilanx-creator-distill-
 | `audio/` | 音效合成、配乐引擎、音乐库（`music.mjs`）、每期配乐段落表 |
 | `scripts/` | 字幕导入、导出、分轨混音，以及按风格管理 `materials/`、`out/` 目录的 `ep-dir.sh` |
 | `styles/` | 风格库（[总表](styles/README.md)） |
-| `.claude/skills/` | Claude Code 工作流 Skill（[见上文](#工作流-skill)） |
+| `.workbuddy/skills/` | Claude Code 工作流 Skill（[见上文](#工作流-skill)） |
 | `tests/` | 素材库和每期的测试 |
 | `public/fonts/` | 随仓库分发的 OFL 字体（[许可](public/fonts/LICENSES.md)） |
 

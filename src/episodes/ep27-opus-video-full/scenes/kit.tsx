@@ -165,7 +165,7 @@ export const VersusTable: React.FC<{f: number; at: number[]; hiAt: number; rows:
   );
 };
 
-/** 目录树：等宽字的树状目录，第 i 行 at[i] 帧出现；hi 那一行橙底白字（「.claude/skills/distill-video」） */
+/** 目录树：等宽字的树状目录，第 i 行 at[i] 帧出现；hi 那一行橙底白字（「.workbuddy/skills/distill-video」） */
 export const FileTree: React.FC<{f: number; at: number[]; lines: [number, string][]; hi?: number; title?: string; w?: number}> = ({f, at, lines, hi, title = 'weilanx-claude-videos', w = 640}) => {
   const r = rise(f, at[0] - 6, 12, 24);
   return (

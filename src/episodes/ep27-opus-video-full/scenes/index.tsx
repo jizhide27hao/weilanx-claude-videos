@@ -514,7 +514,7 @@ export const SCENES: Scene[] = [
 
   // ───────── 04 蒸馏 Skill ─────────
   chapter(4, 105),
-  // B 工程里的 .claude/skills/distill-video
+  // B 工程里的 .workbuddy/skills/distill-video
   {
     roll: 'B',
     from: cf(106) - 6,

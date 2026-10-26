@@ -95,12 +95,15 @@ Studio 里的 `library-wardrobe`（矢量版全部配饰与表情）、`library-
 
 | 文件 | 内容 |
 |---|---|
+| `kit.tsx` | **版面零件库（口播长片 / 翻页版用）**：`Page`（一页容器：透明度 + 模糊对拉 + 3% 慢推，`anchor` 让页内 `t` 从切点起算）、`FADE`（交叉淡化 16 帧）、`Soft` 柔入、`HLine` / `VLine` 金线画出、`RuleFade` 通栏表线整条淡入、`Figure` 标签 + 金色巨数 + 单位（底线对齐）、`Col` 三栏、`KV` 账页键值行（值绝对定位贴右）、`MiniTable` 数据表、`Tag` 条目条、`Note` 脚注、`Frame` 描金框、`Mark` 朱红叉 / 金勾、`HBand` 横条比例、`BarsV` 竖柱组、`Ruler` 刻度尺、`GSub` 字幕（直接读 cues，`skip` 让位，数字描金） |
 | `theme.ts` | 配色 `G`（黑底、暖 / 冷光晕、金、象牙白、羊皮纸、朱红）、字体 `GF`（Garamond 数字和西文、Playfair 斜体书名、宋体中文）、`goldText` 金色渐变大字、`goldTextLight` 小字号重点词、`soft` 模糊柔入、`drift` 慢推 |
 | `stage.tsx` | `GildedBg` 背景（光晕 + 暗角，`tone` 暖 / 冷）、`Dust` 浮尘、`Grain` 胶片颗粒、`YearHeader` 左上年份抬头（`prev` + `rollAt` 老虎机翻年份，`prefix` 写「约」）、`BookCite` 右上文献引用、`SealMark` 朱红小印、`GCaption` 字幕（`【词】` 变金、逐字柔入）、`Smash` 爆点大字（光晕骤亮、金字收拢、光环扩散，`sub` 术语 · English；ep32 起从期里挪进来）、`TitleCard` 片头 / 片尾标题卡（拉丁小标 + 金色大标题 + 放射光芒，可加钟形曲线）、`GQuote` 引文、`Soft` 柔入容器、`bellPath` 钟形曲线路径 |
 | `props.tsx` | `DieFace` 平面骰子（可写 `1/6` 代替点数）、`Die3D` 立体骰子 + `dieTumble` 翻滚落定、`GoldCoin` 金币（`cut` 切扇形、`split` 分开）、`ScoreBar` 分段计分条、`Contender` 对决大数字、`RedStamp` 朱红盖章、`Parchment` 羊皮纸账册、`ProbCard` 描金边对比卡（进度条带 50% 刻度） |
 | `charts.tsx` | `GoldTree` 二叉树（逐层长出，`highlight` 路径描成发光朱红）、`BellBars` 二项分布柱 → 钟形曲线（n 大时自动取 ±4σ 窗口）、`GaltonBoard` 高尔顿板（确定性落珠、堆积、可描曲线）、`RatioChart` 对数横轴的收敛曲线、`DotField` 点阵人群、`GoldWheel` 金线圆环 / 命运之轮 |
 
 要点：所有元素都用 `soft` / `Soft` 柔入，不用弹跳；一场里最多一种朱红；图表的线要「画出来」（`pathLength={1}` + `strokeDasharray`）；场与场之间用模糊交叉淡化，硬切留给大段落。
+
+**两种用法**：无口播短片（ep23 / ep24 / ep32）用 `stage.tsx` 的镜头语言，靠 `Smash` 爆点；有口播长片（ep53 A 版，36 页 / 265 秒）用 `kit.tsx` 的「一页一张账」——不用相机、全柔入、一页同屏摊 6–8 件，工作流见 skill `weilanx-creator-gilded-long-video`。长片里底色 / 浮尘 / 颗粒必须挂在 `Page` 外面，否则两页各降一半不透明度叠着，换页中间整幅发暗。
 
 ## 网点档案风 `halftone/`
 

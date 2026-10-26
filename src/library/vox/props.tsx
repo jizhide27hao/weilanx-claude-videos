@@ -131,8 +131,9 @@ export const Label: React.FC<{children: React.ReactNode; size?: number; bg?: str
 );
 
 /** 横线索引卡 */
+// h 是最小高度：字多了纸跟着长，不让标注掉到纸外面
 export const IndexCard: React.FC<{w: number; h: number; rot?: number; children?: React.ReactNode}> = ({w, h, rot = 0, children}) => (
-  <div style={{position: 'relative', width: w, height: h, transform: `rotate(${rot}deg)`, filter: shadow}}>
+  <div style={{position: 'relative', width: w, minHeight: h, transform: `rotate(${rot}deg)`, filter: shadow}}>
     <div style={{position: 'absolute', inset: 0, background: V.paper, backgroundImage: `linear-gradient(transparent 0, transparent 47px, rgba(184,67,63,0.5) 47px, rgba(184,67,63,0.5) 49px, transparent 49px), repeating-linear-gradient(transparent 0, transparent 37px, rgba(80,110,160,0.28) 37px, rgba(80,110,160,0.28) 39px)`}}>
       <PaperGrainSvg w={w} h={h} seed={5} opacity={0.25} />
     </div>

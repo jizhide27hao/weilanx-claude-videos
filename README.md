@@ -131,7 +131,9 @@ npm run export -- ep00-demo    # render into the folder printed by: bash scripts
 
 ## Workflow Skills
 
-`.claude/skills/` contains eight Claude Code skills. Open the project in Claude Code and describe what you want; the matching skill is picked up automatically.
+`.workbuddy/skills/` contains eleven workflow skills. WorkBuddy scans this directory, so open the project and describe what you want — the matching skill is picked up automatically.
+
+> Moved once (2026-10-26): they used to live in `.claude/skills/`, and were moved to `.workbuddy/skills/` so WorkBuddy can discover them. The old directory is gone, with no compatibility symlink. Claude Code only scans `.claude/skills/`, so point it at the new path if you use it.
 
 | Skill | What it does | Delivery | Sample |
 |---|---|---|---|
@@ -140,6 +142,8 @@ npm run export -- ep00-demo    # render into the folder printed by: bash scripts
 | `weilanx-creator-fps-video` | Tactical-HUD explainer on why something feels bad in FPS games, no voice-over | **One-shot**: video, 3:4 cover, post copy, subtitle doc | `ep25`, `ep29`… |
 | `weilanx-creator-lamplight-video` | Lamplight history short on an ancient Chinese rule or custom, no voice-over | Script and beat sheet first, then one run to the video | `ep28`, `ep30`… |
 | `weilanx-creator-gilded-video` | Music-only knowledge short in the gilded style: anchor word, climax on the track's measured downbeat | Studio preview, export after approval | `ep23`, `ep24` |
+| `weilanx-creator-gilded-long-video` | Gilded-style narrated documentary, ~4.5 min: research, 90 spoken lines, narration split into 30–40 full-screen "ledger pages" with 16-frame cross-fades, generated score | **One-shot**: video, 16:9 + 3:4 covers, post copy, fact-check table; everything lands in `out/<ep>/` | `ep53-huawei-history-gilded` |
+| `weilanx-creator-timeline-video` | Old-paper timeline scroll, ~4 min narrated company history: camera travels the desk in one take | **One-shot**: video, 16:9 + 3:4 covers, post copy, fact-check table; everything lands in `out/<ep>/` | `ep52`, `ep53` |
 | `weilanx-creator-desk-video` | Warm-paper desk explainer for a talking-head "how I did X in N steps" video | Studio preview, export after approval | `ep26`, `ep27` |
 | `weilanx-creator-vox-video` | Vox-style collage explainer: research, licensed real footage, expressive voice-over, hard cuts | Studio preview, export after approval | `ep21` |
 | `weilanx-creator-pixel-video` | One keyword → a pixel-art talking-head explainer (3:4 portrait) | Studio preview, export after approval | `ep05`–`ep17` |
@@ -155,7 +159,7 @@ Some steps originally used the author's private tools (voice clone, speech recog
 - Node.js (developed on v24), `npm install` done
 - `ffmpeg` for export and loudness checks
 - [`uv`](https://docs.astral.sh/uv/) for the Python helper scripts (they run as `uv run --with numpy --with pillow python …`)
-- [Claude Code](https://claude.com/claude-code) opened at the repository root, so it loads `CLAUDE.md` → `AGENTS.md` and the skills in `.claude/skills/`
+- WorkBuddy (or [Claude Code](https://claude.com/claude-code), pointed at `.workbuddy/skills/`) opened at the repository root, so it loads `CLAUDE.md` → `AGENTS.md` and the workflow skills
 - Fonts: the newer styles use system CJK fonts (`Songti SC`, `PingFang SC` on macOS, falling back to `Noto Serif SC` / `Noto Sans SC`). They render best on macOS.
 
 ### Distill a style from reference videos
@@ -171,7 +175,7 @@ The rule is **match the style one-to-one, never copy the content**: components a
 You can also run the breakdown by hand:
 
 ```sh
-uv run --with numpy --with pillow python .claude/skills/weilanx-creator-distill-video/scripts/analyze.py \
+uv run --with numpy --with pillow python .workbuddy/skills/weilanx-creator-distill-video/scripts/analyze.py \
   template/ref.mp4 --out materials/00-公共/风格蒸馏/<style-id>/<video-name>
 ```
 
@@ -182,7 +186,7 @@ The one-shot skills (`blackgold`, `fps`) take a topic and deliver a finished epi
 1. **Provide a music track.** The samples are cut to `we-never`, a track the author is licensed to use; the mp3 is not distributed. Put your own licensed track in `public/music/`, register it in `TRACKS` in `audio/music.mjs`, and measure it:
 
    ```sh
-   uv run --with numpy python .claude/skills/weilanx-creator-gilded-video/scripts/beats.py public/music/<track>.mp3 --to 40
+   uv run --with numpy python .workbuddy/skills/weilanx-creator-gilded-video/scripts/beats.py public/music/<track>.mp3 --to 40
    ```
 
    Then point the episode's `timeline.ts` grid and hit frames at the measured beats (the skill does this if you tell it which track to use).
@@ -230,7 +234,7 @@ Music-only episodes use a single `timeline.ts` per episode instead of subtitles;
 | `audio/` | SFX synthesis, music engine, music library (`music.mjs`), per-episode score sheets |
 | `scripts/` | SRT import, export, stem remix, and `ep-dir.sh` for the per-style `materials/` and `out/` folders |
 | `styles/` | Style library ([index](styles/README.md)) |
-| `.claude/skills/` | Claude Code workflow skills ([see above](#workflow-skills)) |
+| `.workbuddy/skills/` | Claude Code workflow skills ([see above](#workflow-skills)) |
 | `tests/` | Library and per-episode tests |
 | `public/fonts/` | Bundled OFL fonts ([licenses](public/fonts/LICENSES.md)) |
 

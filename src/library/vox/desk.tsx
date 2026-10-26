@@ -10,8 +10,9 @@ export const Put: React.FC<{x: number; y: number; scale?: number; children: Reac
 );
 
 /** 打字机 / 论文页 / 新闻稿的纸 */
+// h 是最小高度：以前是死高 + overflow hidden，字一多就被裁掉半行
 export const Doc: React.FC<{w: number; h: number; rot?: number; children: React.ReactNode; color?: string}> = ({w, h, rot = 0, children, color = V.paper}) => (
-  <div style={{position: 'relative', width: w, height: h, background: color, transform: `rotate(${rot}deg)`, filter: shadow, padding: '30px 36px', boxSizing: 'border-box', color: V.ink, overflow: 'hidden'}}>{children}</div>
+  <div style={{position: 'relative', width: w, minHeight: h, background: color, transform: `rotate(${rot}deg)`, filter: shadow, padding: '30px 36px', boxSizing: 'border-box', color: V.ink}}>{children}</div>
 );
 
 /** 大数字（Anton） */

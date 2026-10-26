@@ -41,6 +41,8 @@
 
 - 作品 ID 形如 `ep35-choke`，同时是 `src/episodes/` 的目录名、`src/Root.tsx` 里的 Composition ID（Root 按风格分 `<Folder>`），以及 `public/audio/`、`audio/episodes/`、`tests/episodes/` 里的文件名。新期号取 `src/episodes/` 最大号 + 1。
 - `materials/`（原始素材）和 `out/`（成片）不进 git，**按风格分类、风格内从 00 编号**，如 `out/06-战术屏科普风/04-残局手抖/`；每期目录里的隐藏文件 `.ep` 记着作品 ID。skill 文档里的 `<素材目录>` / `<成片目录>` 用脚本查：`bash scripts/ep-dir.sh <作品ID> materials|out`；新一期先建目录：`bash scripts/ep-dir.sh <作品ID> materials --new <风格目录> <中文短题>`（materials 和 out 一起建）。
+- **口播长片这条线（`weilanx-creator-timeline-video` / `weilanx-creator-gilded-long-video`）用另一种排法**：`out/<期>/`，内部再分 `成片 / 封面 / 文案 / 抽帧 / 文档`，**一期一个文件夹，不再套风格目录和编号**。理由：同一期常做两个风格版本（ep53 就有 Vox 版和暗金翻页版），放在同一个 `out/<期>/` 下才好对比；路径也能直接从作品 ID 推出来，不用先查脚本。建目录：`node .workbuddy/skills/weilanx-creator-timeline-video/scripts/out-dir.mjs <期>`（两套 skill 共用）。
+- **每一期都要出两版封面**：16:9 横版（B 站 / YouTube / 视频号 / 公众号）+ 3:4 竖版（抖音 / 小红书）。两个比例要各写一个组件，缩放改不了——详见两套 skill 的 `references/`。
 - 用了某种风格就把期数补进 `styles/README.md` 的总表。
 
 ## 结构与核心机制
@@ -70,15 +72,20 @@
 
 ## 工作流 Skill
 
-`.claude/skills/` 里有八个工作流，在 Claude Code 里打开本工程、直接说要做什么就会触发对应的 skill：
+`.workbuddy/skills/` 里有十一个工作流。WorkBuddy 会扫描这个目录，打开本工程、直接说要做什么就会触发对应的 skill：
+
+> **目录位置改过一次（2026-10-26）**：原先在 `.claude/skills/`，为了让 WorkBuddy 能自动发现而移到 `.workbuddy/skills/`，原目录已删除、不留兼容软链。
+> 如果在 Claude Code 里用，需要自己把 skill 路径指过来（Claude Code 只扫 `.claude/skills/`）。
 
 | 风格 | skill | 交付方式 |
 |---|---|---|
 | 蒸馏参考视频成新风格 | `weilanx-creator-distill-video` | 产出 `src/library/<风格ID>/` + 预览作品 + 配方卡 |
 | 黑金光影风（博弈论 / 反直觉模型，无口播） | `weilanx-creator-blackgold-video` | **一锅出**：不等确认，直接导出 + 3:4 封面 + 发布文案 + 双语字幕稿 |
 | 战术屏科普风（FPS 科普，无口播） | `weilanx-creator-fps-video` | **一锅出**：直接导出 + 封面 + 发布文案 + 字幕稿 |
+| 时间轴长卷风（公司史 / 发展史，有口播，约 4 分钟） | `weilanx-creator-timeline-video` | **一锅出**：查证 + 写稿 + edge-tts 配音 + 桌面长卷 + 程序化配乐 + 事实核查 + 导出 + **16:9 横版 / 3:4 竖版两套封面** + 抖音标题描述，交付物按选题收进 `out/<期>/` |
 | 灯火史话风（中国古代知识，无口播） | `weilanx-creator-lamplight-video` | 先给文案与卡点稿确认，再出片 |
 | 暗金文献风（无口播短片） | `weilanx-creator-gilded-video` | 先 Studio 预览，确认后导出 |
+| 暗金文献风 · 口播长片（翻页版，约 4 分半） | `weilanx-creator-gilded-long-video` | **一锅出**：查证 + 写稿 + edge-tts 配音 + 按口播切 30–40 页账页 + 交叉淡化 + 程序化配乐 + 事实核查 + 导出 + **16:9 横版 / 3:4 竖版两套暗金封面** + 抖音标题描述，交付物按选题收进 `out/<期>/` |
 | 暖纸工作台风（口播流程拆解） | `weilanx-creator-desk-video` | 先 Studio 预览，确认后导出 |
 | Vox 拼贴科普（横屏，真实素材） | `weilanx-creator-vox-video` | 先 Studio 预览，确认后导出 |
 | 像素贴纸风口播（竖屏 3:4） | `weilanx-creator-pixel-video` | 先 Studio 预览，确认后导出 |

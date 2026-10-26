@@ -97,8 +97,10 @@ export interface VoxShowConfig {
   sfx: SfxCue[];
   duration: number;
   cueAt: CueAt;
-  voice: string;
-  bgm: string;
+  /** 人声；仓库里不含版权音源，没有就留空 */
+  voice?: string;
+  /** 配乐；同样可以留空 */
+  bgm?: string;
   bgmVolume?: number;
   w?: number;
   h?: number;
@@ -122,8 +124,8 @@ export const VoxShow: React.FC<{config: VoxShowConfig; mix?: Mix}> = ({config, m
           <cover.C f={f} />
         </div>
       )}
-      {on('voice') && <Audio src={staticFile(voice)} />}
-      {on('bgm') && <Audio src={staticFile(bgm)} volume={bgmVolume} />}
+      {on('voice') && voice && <Audio src={staticFile(voice)} />}
+      {on('bgm') && bgm && <Audio src={staticFile(bgm)} volume={bgmVolume} />}
       {on('sfx') &&
         sfx.map(([name, at, vol], i) => (
           <Sequence key={i} from={Math.max(0, at)} durationInFrames={48} layout="none">

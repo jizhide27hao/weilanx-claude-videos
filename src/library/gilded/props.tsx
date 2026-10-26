@@ -195,8 +195,9 @@ export const RedStamp: React.FC<{f: number; at: number; text: string; size?: num
   );
 };
 
-/** 羊皮纸文书：泛黄纸面 + 标题 + 小标题 + 一列「条目 …… 数字」，用来表现古代账册、名单、公报 */
-export const Parchment: React.FC<{title: string; sub?: string; rows: [string, string][]; foot?: [string, string]; w?: number; rot?: number}> = ({title, sub, rows, foot, w = 340, rot = -3}) => (
+/** 羊皮纸文书：泛黄纸面 + 标题 + 小标题 + 一列「条目 …… 数字」，用来表现古代账册、名单、公报。
+ *  fs 是正文字号（默认 15，与旧期一致）；在 1920 画布上想让观众读得清，传 19–20。 */
+export const Parchment: React.FC<{title: string; sub?: string; rows: [string, string][]; foot?: [string, string]; w?: number; rot?: number; fs?: number}> = ({title, sub, rows, foot, w = 340, rot = -3, fs = 15}) => (
   <div
     style={{
       width: w,
@@ -207,18 +208,18 @@ export const Parchment: React.FC<{title: string; sub?: string; rows: [string, st
       color: '#3b2a17',
     }}
   >
-    <div style={{textAlign: 'center', fontFamily: GF.latinBold, fontSize: 30, letterSpacing: 4}}>{title}</div>
-    {sub ? <div style={{textAlign: 'center', fontFamily: GF.latinItalic, fontSize: 15, marginTop: 2}}>{sub}</div> : null}
+    <div style={{textAlign: 'center', fontFamily: GF.latinBold, fontSize: fs * 2, letterSpacing: 4}}>{title}</div>
+    {sub ? <div style={{textAlign: 'center', fontFamily: GF.latinItalic, fontSize: fs, marginTop: 2}}>{sub}</div> : null}
     <div style={{height: 1, background: 'rgba(59,42,23,0.5)', margin: '12px 0 10px'}} />
     {rows.map(([k, v]) => (
-      <div key={k} style={{display: 'flex', alignItems: 'baseline', gap: 6, fontFamily: GF.latin, fontSize: 15, lineHeight: 1.6}}>
+      <div key={k} style={{display: 'flex', alignItems: 'baseline', gap: 6, fontFamily: GF.latin, fontSize: fs, lineHeight: 1.7}}>
         <span>{k}</span>
         <span style={{flex: 1, borderBottom: '1px dotted rgba(59,42,23,0.4)'}} />
         <span style={{fontFamily: GF.num}}>{v}</span>
       </div>
     ))}
     {foot ? (
-      <div style={{display: 'flex', justifyContent: 'space-between', fontFamily: GF.latinItalic, fontSize: 15, marginTop: 12, borderTop: '1px solid rgba(59,42,23,0.4)', paddingTop: 8}}>
+      <div style={{display: 'flex', justifyContent: 'space-between', fontFamily: GF.latinItalic, fontSize: fs, marginTop: 12, borderTop: '1px solid rgba(59,42,23,0.4)', paddingTop: 8}}>
         <span>{foot[0]}</span>
         <span>{foot[1]}</span>
       </div>
